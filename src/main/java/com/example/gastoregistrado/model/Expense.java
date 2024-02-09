@@ -43,6 +43,26 @@ public class Expense implements Serializable {
     @JoinColumn(name = "user_id", nullable = false, foreignKey = @ForeignKey(name = "fk_user_id_exp"))
     private User user;
 
+    public Expense() {
+    }
+
+    public Expense(Long id, String name, long amount, String category, String currency, Date expireDate, String description, String imageCover, String term, String state, LocalDateTime latestUpdate, String type, LocalDate createdAt, User user) {
+        this.id = id;
+        this.name = name;
+        this.amount = amount;
+        this.category = category;
+        this.currency = currency;
+        this.expireDate = expireDate;
+        this.description = description;
+        this.imageCover = imageCover;
+        this.term = term;
+        this.state = state;
+        this.latestUpdate = latestUpdate;
+        this.type = type;
+        this.createdAt = createdAt;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }

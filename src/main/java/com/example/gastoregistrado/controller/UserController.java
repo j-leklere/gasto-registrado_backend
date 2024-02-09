@@ -17,6 +17,6 @@ public class UserController {
     @RequestMapping(value = "/createUser", method = {RequestMethod.POST})
     public ResponseEntity<String> createUser(@RequestBody UserDto userDto) {
         userService.createUser(userDto);
-        return ResponseEntity.status(HttpStatus.OK).body("User created succesfully!");
+        return ResponseEntity.status(HttpStatus.OK).body("User created successfully!");
     }
 }

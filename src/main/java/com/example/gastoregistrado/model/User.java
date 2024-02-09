@@ -1,6 +1,10 @@
 package com.example.gastoregistrado.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import org.aspectj.lang.annotation.RequiredTypes;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 
@@ -11,8 +15,14 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull(message = "This field cannot be null.")
+    @NotEmpty(message = "This field cannot be empty.")
     private String username;
+    @NotNull(message = "This field cannot be null.")
+    @NotEmpty(message = "This field cannot be empty.")
     private String email;
+    @NotNull(message = "This field cannot be null.")
+    @NotEmpty(message = "This field cannot be empty.")
     private String password;
     private String avatar;
     private String role;

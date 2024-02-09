@@ -12,6 +12,7 @@ public class Balance implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
     private long amount;
     private String currency;
     @Column(name = "image_cover")
@@ -28,7 +29,7 @@ public class Balance implements Serializable {
     @Temporal(TemporalType.DATE)
     private LocalDate createdAt;
     @PrePersist
-    protected void onCreate() {
+    public void onCreate() {
         this.createdAt = LocalDate.now();
     }
 
@@ -36,12 +37,35 @@ public class Balance implements Serializable {
     @JoinColumn(name = "user_id", nullable = false, foreignKey = @ForeignKey(name = "fk_user_id_bal"))
     private User user;
 
+    public Balance() {
+    }
+
+    public Balance(Long id, String name, long amount, String currency, String imageCover, LocalDateTime latestUpdate, String type, LocalDate createdAt, User user) {
+        this.id = id;
+        this.name = name;
+        this.amount = amount;
+        this.currency = currency;
+        this.imageCover = imageCover;
+        this.latestUpdate = latestUpdate;
+        this.type = type;
+        this.createdAt = createdAt;
+        this.user = user;
+    }
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public long getAmount() {

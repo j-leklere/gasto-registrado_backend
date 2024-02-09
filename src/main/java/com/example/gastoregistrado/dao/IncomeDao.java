@@ -11,4 +11,7 @@ import java.util.List;
 public interface IncomeDao extends JpaRepository<Income, Long> {
     @Query("SELECT i FROM Income i WHERE i.user.id = :userId")
     List<Income> findIncomesByUserId(Long userId);
+
+    @Query("SELECT i FROM Income i WHERE i.user.id = :userId AND i.term = 'monthly' AND i.state = 'active'")
+    List<Income> findMonthlyIncomesByUserId(Long userId);
 }

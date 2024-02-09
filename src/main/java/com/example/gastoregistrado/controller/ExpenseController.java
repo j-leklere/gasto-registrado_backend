@@ -17,11 +17,18 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
-    @GetMapping(value = "/getExpensesByUser/{userId}")
+    @GetMapping(value = "/getExpensesByUserId/{userId}")
     public ResponseEntity<List<Expense>> getExpensesByUser(@PathVariable Long userId) {
         List<Expense> expenses = expenseService.getExpensesByUserId(userId);
         return ResponseEntity.ok(expenses);
     }
+
+    @GetMapping(value = "/getTotalExpensesByUserId/{userId}")
+    public ResponseEntity<Number> getTotalExpensesByUser(@PathVariable Long userId) {
+        Long totalExpenses = expenseService.getTotalExpensesByUserId(userId);
+        return ResponseEntity.ok(totalExpenses);
+    }
+
 
     @RequestMapping(value = "/createExpense", method = {RequestMethod.POST})
     public ResponseEntity<String> createExpense(@RequestBody ExpenseDto expenseDto) {

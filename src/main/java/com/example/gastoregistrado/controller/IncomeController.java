@@ -23,6 +23,19 @@ public class IncomeController {
         return ResponseEntity.ok(incomes);
     }
 
+    @GetMapping("/getMonthlyIncomesByUserId/{userId}")
+    public ResponseEntity<List<Income>> getMonthlyIncomesByUser(@PathVariable Long userId) {
+        List<Income> monthlyIncomes = incomeService.getMonthlyIncomesByUserId(userId);
+        return ResponseEntity.ok(monthlyIncomes);
+    }
+
+    @GetMapping("/getTotalMonthlyIncomesByUserId/{userId}")
+    public ResponseEntity<Number> getTotalMonthlyIncomesByUser(@PathVariable Long userId) {
+        Long totalMonthlyIncomes = incomeService.getTotalMonthlyIncomesByUserId(userId);
+        return ResponseEntity.ok(totalMonthlyIncomes);
+    }
+
+
     @RequestMapping(value = "/createIncome", method = {RequestMethod.POST})
     public ResponseEntity<String> createIncome(@RequestBody IncomeDto incomeDto) {
         incomeService.createIncome(incomeDto);

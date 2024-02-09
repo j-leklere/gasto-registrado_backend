@@ -3,6 +3,7 @@ package com.example.gastoregistrado.service;
 import com.example.gastoregistrado.dao.IncomeDao;
 import com.example.gastoregistrado.dao.UserDao;
 import com.example.gastoregistrado.dto.IncomeDto;
+import com.example.gastoregistrado.model.Expense;
 import com.example.gastoregistrado.model.Income;
 import com.example.gastoregistrado.model.User;
 import jakarta.persistence.EntityNotFoundException;
@@ -43,5 +44,20 @@ public class IncomeService {
 
     public List<Income> getIncomesByUserId(Long userId) {
         return incomeDao.findIncomesByUserId(userId);
+    }
+
+    public List<Income> getMonthlyIncomesByUserId(Long userId) {
+        List<Income> userMonthlyIncomes = incomeDao.findMonthlyIncomesByUserId(userId);
+
+        return userMonthlyIncomes;
+    }
+
+    public Long getTotalMonthlyIncomesByUserId(Long userId) {
+        List<Income> userMonthlyIncomes = incomeDao.findMonthlyIncomesByUserId(userId);
+
+        return userMonthlyIncomes.stream()
+                .mapToLong(Income::getAmount)
+                .sum();
+
     }
 }

@@ -75,6 +75,14 @@ public class ExpenseService {
         return expenseDao.findExpensesByUserId(userId);
     }
 
+    public Long getTotalExpensesByUserId(Long userId) {
+        List<Expense> userExpenses = expenseDao.findExpensesByUserId(userId);
+
+        return userExpenses.stream()
+                .mapToLong(Expense::getAmount)
+                .sum();
+    }
+
     public void editExpense(Long expenseId, ExpenseDto expenseDto) {
         Expense expense = copyProperties(expenseDto, expenseDao.findById(expenseId).get());
 

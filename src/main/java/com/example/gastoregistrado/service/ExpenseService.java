@@ -88,4 +88,12 @@ public class ExpenseService {
 
         expenseDao.save(expense);
     }
+
+    public List<Object[]> getTotalCategoryExpensesByUserId(Long userId) {
+        return expenseDao.findCategoryTotalExpensesByUserId(userId);
+    }
+
+    public List<Object[]> getExpensesCategoriesByUserId(Long userId) {
+        return expenseDao.findExpensesCategoriesByUserId(userId);
+    }
 }

@@ -18,15 +18,27 @@ public class ExpenseController {
     private ExpenseService expenseService;
 
     @GetMapping(value = "/getExpensesByUserId/{userId}")
-    public ResponseEntity<List<Expense>> getExpensesByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Expense>> getExpensesByUserId(@PathVariable Long userId) {
         List<Expense> expenses = expenseService.getExpensesByUserId(userId);
         return ResponseEntity.ok(expenses);
     }
 
     @GetMapping(value = "/getTotalExpensesByUserId/{userId}")
-    public ResponseEntity<Number> getTotalExpensesByUser(@PathVariable Long userId) {
+    public ResponseEntity<Number> getTotalExpensesByUserId(@PathVariable Long userId) {
         Long totalExpenses = expenseService.getTotalExpensesByUserId(userId);
         return ResponseEntity.ok(totalExpenses);
+    }
+
+    @GetMapping(value = "/getExpensesCategoriesByUserId/{userId}")
+    public ResponseEntity<List<Object[]>> getExpensesCategoriesByUserId(@PathVariable Long userId) {
+        List<Object[]> totalCategoryExpenses = expenseService.getExpensesCategoriesByUserId(userId);
+        return ResponseEntity.ok(totalCategoryExpenses);
+    }
+
+    @GetMapping(value = "/getTotalCategoryExpensesByUserId/{userId}")
+    public ResponseEntity<List<Object[]>> getTotalCategoryExpensesByUserId(@PathVariable Long userId) {
+        List<Object[]> totalCategoryExpenses = expenseService.getTotalCategoryExpensesByUserId(userId);
+        return ResponseEntity.ok(totalCategoryExpenses);
     }
 
 

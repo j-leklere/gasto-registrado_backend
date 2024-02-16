@@ -19,13 +19,13 @@ public class BalanceController {
     private BalanceService balanceService;
 
     @GetMapping(value = "/getBalancesByUserId/{userId}")
-    public ResponseEntity<List<Balance>> getBalancesByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Balance>> getBalancesByUserId(@PathVariable Long userId) {
         List<Balance> balances = balanceService.getBalancesByUserId(userId);
         return ResponseEntity.ok(balances);
     }
 
     @GetMapping(value = "/getTotalBalancesByUserId/{userId}")
-    public ResponseEntity<Number> getTotalBalancesByUser(@PathVariable Long userId) {
+    public ResponseEntity<Number> getTotalBalancesByUserId(@PathVariable Long userId) {
         Long totalBalances = balanceService.getTotalBalancesByUserId(userId);
         return ResponseEntity.ok(totalBalances);
     }

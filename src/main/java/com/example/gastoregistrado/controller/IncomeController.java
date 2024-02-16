@@ -18,19 +18,19 @@ public class IncomeController {
     private IncomeService incomeService;
 
     @GetMapping("/getIncomesByUserId/{userId}")
-    public ResponseEntity<List<Income>> getIncomesByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Income>> getIncomesByUserId(@PathVariable Long userId) {
         List<Income> incomes = incomeService.getIncomesByUserId(userId);
         return ResponseEntity.ok(incomes);
     }
 
     @GetMapping("/getMonthlyIncomesByUserId/{userId}")
-    public ResponseEntity<List<Income>> getMonthlyIncomesByUser(@PathVariable Long userId) {
+    public ResponseEntity<List<Income>> getMonthlyIncomesByUserId(@PathVariable Long userId) {
         List<Income> monthlyIncomes = incomeService.getMonthlyIncomesByUserId(userId);
         return ResponseEntity.ok(monthlyIncomes);
     }
 
     @GetMapping("/getTotalMonthlyIncomesByUserId/{userId}")
-    public ResponseEntity<Number> getTotalMonthlyIncomesByUser(@PathVariable Long userId) {
+    public ResponseEntity<Number> getTotalMonthlyIncomesByUserId(@PathVariable Long userId) {
         Long totalMonthlyIncomes = incomeService.getTotalMonthlyIncomesByUserId(userId);
         return ResponseEntity.ok(totalMonthlyIncomes);
     }

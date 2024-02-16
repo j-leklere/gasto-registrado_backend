@@ -2,6 +2,7 @@ package com.example.gastoregistrado.service;
 
 import com.example.gastoregistrado.dao.ExpenseDao;
 import com.example.gastoregistrado.dao.UserDao;
+import com.example.gastoregistrado.dto.CategoryTotalDto;
 import com.example.gastoregistrado.dto.ExpenseDto;
 import com.example.gastoregistrado.model.Expense;
 import com.example.gastoregistrado.model.User;
@@ -89,7 +90,7 @@ public class ExpenseService {
         expenseDao.save(expense);
     }
 
-    public List<Object[]> getTotalCategoryExpensesByUserId(Long userId) {
+    public List<CategoryTotalDto> getTotalCategoryExpensesByUserId(Long userId) {
         return expenseDao.findCategoryTotalExpensesByUserId(userId);
     }
 

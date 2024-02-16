@@ -1,5 +1,6 @@
 package com.example.gastoregistrado.controller;
 
+import com.example.gastoregistrado.dto.CategoryTotalDto;
 import com.example.gastoregistrado.dto.ExpenseDto;
 import com.example.gastoregistrado.model.Expense;
 import com.example.gastoregistrado.service.ExpenseService;
@@ -36,8 +37,8 @@ public class ExpenseController {
     }
 
     @GetMapping(value = "/getTotalCategoryExpensesByUserId/{userId}")
-    public ResponseEntity<List<Object[]>> getTotalCategoryExpensesByUserId(@PathVariable Long userId) {
-        List<Object[]> totalCategoryExpenses = expenseService.getTotalCategoryExpensesByUserId(userId);
+    public ResponseEntity<List<CategoryTotalDto>> getTotalCategoryExpensesByUserId(@PathVariable Long userId) {
+        List<CategoryTotalDto> totalCategoryExpenses = expenseService.getTotalCategoryExpensesByUserId(userId);
         return ResponseEntity.ok(totalCategoryExpenses);
     }
 
